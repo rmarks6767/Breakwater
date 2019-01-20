@@ -11,11 +11,13 @@ namespace UntitledPirateGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Drawer DRAWER;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
         }
 
         /// <summary>
@@ -27,6 +29,7 @@ namespace UntitledPirateGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            DRAWER = new Drawer();
 
             base.Initialize();
             Screen.SetGame(this);
@@ -75,7 +78,7 @@ namespace UntitledPirateGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
