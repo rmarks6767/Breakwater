@@ -41,6 +41,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CollisionSystem.cs" />
+    <Compile Include="Entities.cs" />
     <Compile Include="Drawer.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
