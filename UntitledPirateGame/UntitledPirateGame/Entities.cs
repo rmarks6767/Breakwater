@@ -30,6 +30,9 @@ namespace UntitledPirateGame
             // "depth" of the object, position on the layers on the screen
             public int elevation;
 
+            // rotation of the object in radians
+            public float rotation;
+
             // if the object is visible on the screen
             public bool isVisible;
 
@@ -43,7 +46,7 @@ namespace UntitledPirateGame
 
         public EntityVariables Vars { get { return vars; } }
 
-        public Entities(int width, int height, int originX, int originY, int elevation, bool isVisible, Texture2D sprite)
+        public Entities(int width, int height, int originX, int originY, int elevation, float rotation, bool isVisible, Texture2D sprite)
         {
             //create the struct to hold the variables for the entity
             vars = new EntityVariables
@@ -52,7 +55,8 @@ namespace UntitledPirateGame
                 collisionBox = new Rectangle((originX - (width / 2)), (originY - (height / 2)), width, height),
                 elevation = elevation,
                 isVisible = isVisible,
-                sprite = sprite
+                sprite = sprite,
+                rotation = rotation
             };
         }
     }
