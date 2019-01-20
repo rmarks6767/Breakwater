@@ -12,13 +12,13 @@ namespace UntitledPirateGame
     static class Screen
     {
 
-        static double x1, y1 = 0;
+        static int x1, y1 = 0;
         static Game1 game;
 
         /// <summary>
         /// The screen's world x1 coordinate
         /// </summary>
-        static double X1
+        public static int X1
         {
             get { return x1; }
             set { x1 = value; }
@@ -27,7 +27,7 @@ namespace UntitledPirateGame
         /// <summary>
         /// The screen's world y1 coordinate
         /// </summary>
-        static double Y1
+        public static int Y1
         {
             get { return y1; }
             set { y1 = value; }
@@ -36,7 +36,7 @@ namespace UntitledPirateGame
         /// <summary>
         /// The screen's world x2 coordinate
         /// </summary>
-        static double X2
+        public static int X2
         {
             get { return x1 + game.GraphicsDevice.Viewport.Width; }
         }
@@ -44,9 +44,18 @@ namespace UntitledPirateGame
         /// <summary>
         /// The sreen's world y2 coordinate
         /// </summary>
-        static double Y2
+        public static int Y2
         {
             get { return y1 + game.GraphicsDevice.Viewport.Height; }
+        }
+
+        public static Rectangle ScreenRectangle
+        {
+            get {
+                Rectangle rect = new Rectangle(x1, y1, X2 - x1, Y2 - y1);
+                return rect;
+            }
+            
         }
 
         /// <summary>

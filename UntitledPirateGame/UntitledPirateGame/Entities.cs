@@ -19,11 +19,18 @@ namespace UntitledPirateGame
          */
         public struct EntityVariables
         {
-            //name and type of entity being created
+
+            /// <summary>
+            ///name of entity being created 
+            /// </summary>
             public string name;
+
+            /// <summary>
+            ///type of entity being created 
+            /// </summary>
             public string type;
 
-            // Origin of the original object
+            /// Origin of the original object
             public int originX;
             public int originY;
 
@@ -39,6 +46,21 @@ namespace UntitledPirateGame
             //the graphics stuff for the entity
             public Texture2D sprite;
             public Rectangle collisionBox;
+        }
+        
+        /// <summary>
+        /// Determine whether or not this entity is on screen or not
+        /// </summary>
+        public bool OnScreen
+        {
+            get
+            {
+                if (CoordinateMath.RectanglesOverLap(Vars.collisionBox,Screen.ScreenRectangle))
+                {
+                    return true;
+                }
+                return false;
+            }
         }
 
         //creating the struct so it may be accessed outside of the class

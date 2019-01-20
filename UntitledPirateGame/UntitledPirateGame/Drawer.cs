@@ -17,7 +17,12 @@ namespace UntitledPirateGame
             spriteBatch.Begin();
             foreach(Entities entity in sortedEntities)
             {
-                spriteBatch.Draw(texture: entity.Vars.sprite, destinationRectangle: entity.Vars.collisionBox, rotation: entity.Vars.rotation, origin: new Vector2(entity.Vars.collisionBox.Width / 2, entity.Vars.collisionBox.Height / 2));
+                spriteBatch.Draw(
+                    texture: entity.Vars.sprite,
+                    destinationRectangle: entity.Vars.collisionBox,
+                    rotation: entity.Vars.rotation,
+                    origin: new Vector2(entity.Vars.collisionBox.Width / 2, entity.Vars.collisionBox.Height / 2)
+                    );
             }
             spriteBatch.End();
         }
