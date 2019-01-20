@@ -15,8 +15,9 @@ namespace UntitledPirateGame
          * -Enemies
          * -Any buildings
          * -Ships
+         * -etc.
          */
-        public struct entityVariables
+        public struct EntityVariables
         {
             //name and type of entity being created
             public string name;
@@ -36,15 +37,23 @@ namespace UntitledPirateGame
             public Texture2D sprite;
             public Rectangle collisionBox;
         }
+
+        //creating the struct so it may be accessed outside of the class
+        private EntityVariables vars;
+
+        public EntityVariables Vars { get { return vars; } }
+
         public Entities(int width, int height, int originX, int originY, int elevation, bool isVisible, Texture2D sprite)
         {
-            //set the collision box based on the origin 
-            entityVariables.collisionBox = new Rectangle((originX - (width / 2)), (originY - (height / 2)), width, height);
-            entityVariables.elevation = elevation;
-            entityVariables.isVisible = isVisible;
-            entityVariables.sprite = sprite;
-
-
+            //create the struct to hold the variables for the entity
+            vars = new EntityVariables
+            {
+                //set the collision box based on the origin
+                collisionBox = new Rectangle((originX - (width / 2)), (originY - (height / 2)), width, height),
+                elevation = elevation,
+                isVisible = isVisible,
+                sprite = sprite
+            };
         }
     }
 }

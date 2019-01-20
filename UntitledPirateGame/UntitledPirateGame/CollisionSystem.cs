@@ -9,7 +9,14 @@ namespace UntitledPirateGame
     class CollisionSystem
     {
         // list of all the entities that exist in the room
-        private List<Entities> entities = new List<Entities>();
+        private static List<Entities> entities;
+
+        public List<Entities> Entities { get { return entities; } }
+
+        public CollisionSystem()
+        {
+            entities = new List<Entities>();
+        }
 
         // all entities will add themselves to the list to be able to check the collisions
         public void AddEntity(Entities s) { entities.Add(s); }
@@ -39,15 +46,21 @@ namespace UntitledPirateGame
                 for (int i = 0; i < boxes.Count; i++)
                 {
                     //nw
+                    if (x1 <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= (x2 / 2) && y1 <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.X <= (x2 / 2))
+                    {
+                        
+                    }
+
+                    //ne
                     if ()
                     {
 
                     }
-
-                    //ne
-
                     //sw
+                    if ()
+                    {
 
+                    }
                     //se
                 }
             }
