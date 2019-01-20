@@ -29,6 +29,7 @@ namespace UntitledPirateGame
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            Screen.SetGame(this);
         }
 
         /// <summary>
