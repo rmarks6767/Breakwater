@@ -14,6 +14,7 @@ namespace UntitledPirateGame
         [STAThread]
         static void Main()
         {
+            TerrainGenerator tg = new TerrainGenerator();
             using (var game = new Game1())
                 game.Run();
         }
