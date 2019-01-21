@@ -22,6 +22,11 @@ namespace UntitledPirateGame
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.IsFullScreen = true;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
+
+
 
         }
 
@@ -37,9 +42,8 @@ namespace UntitledPirateGame
             DRAWER = new Drawer();
             Chunks = new List<Chunk>();
             Chunks.Add(new Chunk(0, 0));
-            Chunks.Add(new Chunk(100, 0));
-            Chunks.Add(new Chunk(0, 100));
-            Chunks.Add(new Chunk(100, 100));
+            
+            
             
             
 
@@ -59,7 +63,11 @@ namespace UntitledPirateGame
             Default = this.Content.Load<Texture2D>("defaultSprite");
 
             Chunks[0].Add(new Entities(16, 16, 60, 60, 0, 0, true, Default));
-            Chunks[0].Add(player = new Player(8, 16, 16, 45, 45, 0, 0, true, Default));
+            Chunks[0].Add(new Entities(16, 16, 90, 60, 0, 0, true, Default));
+            Chunks[0].Add(new Entities(16, 16, 60, 10, 0, 0, true, Default));
+            Chunks[0].Add(new Entities(16, 16, 70, 10, 0, 0, true, Default));
+            Chunks[0].Add(new Entities(16, 16, 30, 70, 0, 0, true, Default));
+            Chunks[0].Add(player = new Player(100, 16, 16, 200, 200, 0, 0, true, Default));
             // TODO: use this.Content to load your game content here
         }
 
@@ -84,6 +92,8 @@ namespace UntitledPirateGame
 
             // TODO: Add your update logic here
             player.Update(gameTime);
+            Screen.X1 = player.vars.collisionBox.Center.X - ((Screen.X2 - Screen.X1) / 2);
+            Screen.Y1 = player.vars.collisionBox.Center.Y - ((Screen.Y2 - Screen.Y1) / 2);
             base.Update(gameTime);
         }
 

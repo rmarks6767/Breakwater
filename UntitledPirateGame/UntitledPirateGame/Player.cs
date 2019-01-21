@@ -20,19 +20,19 @@ namespace UntitledPirateGame
         {
             if(Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                vars.originY -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.collisionBox.Y -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
             }
             if(Keyboard.GetState().IsKeyDown(Keys.S))
             {
-                vars.originY += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.collisionBox.Y += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
             }
             if(Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                vars.originX -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.collisionBox.X -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
             }
             if(Keyboard.GetState().IsKeyDown(Keys.D))
             {
-                vars.originX += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.collisionBox.X += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
             vars.rotation = Pointer.GetAngleBetween(this);
