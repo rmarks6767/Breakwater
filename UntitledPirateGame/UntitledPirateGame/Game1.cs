@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace UntitledPirateGame
 {
@@ -12,6 +13,9 @@ namespace UntitledPirateGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Drawer DRAWER;
+        List<Chunk> Chunks;
+        Texture2D Default;
+        
 
         public Game1()
         {
@@ -30,6 +34,13 @@ namespace UntitledPirateGame
         {
             // TODO: Add your initialization logic here
             DRAWER = new Drawer();
+            Chunks = new List<Chunk>();
+            Chunks.Add(new Chunk(0, 0));
+            Chunks.Add(new Chunk(100, 0));
+            Chunks.Add(new Chunk(0, 100));
+            Chunks.Add(new Chunk(100, 100));
+            Chunks[0].Add(new Entities(16, 16, 5, 5, 0, 0, true, Default));
+            
 
             base.Initialize();
             Screen.SetGame(this);
@@ -43,6 +54,7 @@ namespace UntitledPirateGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Default = Content.Load<Texture2D>("defaultSprite");
 
             // TODO: use this.Content to load your game content here
         }
@@ -77,10 +89,24 @@ namespace UntitledPirateGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            List<Entities> OnScreenEntities = new List<Entities>();
+            for (int i = 0; i < Chunks.Count; i++)
+            {
+                if (Chunks[i].OnScreen)
+                {
+                    for (int ii = 0; ii < Chunks[i].members.Count;ii++)
+                    {
+                        if (Chunks[i].members[ii].OnScreen)
+                        {
+                            OnScreenEntities.Add(Chunks[i].members[ii]);
+                        }
+                    }
+                }
+            }
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
-            // TODO: Add your drawing code here
 
+            // TODO: Add your drawing code here
+            DRAWER.Draw(spriteBatch,OnScreenEntities);
             base.Draw(gameTime);
         }
     }

@@ -30,66 +30,70 @@ namespace UntitledPirateGame
 
         public QuadTree(List<Entities> boxes, double x1, double x2, double y1, double y2)
         {
+            double halfLength = x2 - x1 / 2;
+            double halfHeight = y2 - y1 / 2;
+
             if (boxes.Count > 1)
             {
+                
                 for (int i = 0; i < boxes.Count; i++)
                 {
+                    
                     //nw
-
-                    if ((x1 <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= (x2 / 2))                 //top left 
-                        && (y1 <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= (y2 / 2))
-                        || (x1 <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= (x2 / 2))      //top right
-                        && (y1 <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= (y2 / 2))
-                        || (x1 <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= (x2 / 2))              //bottom left
-                        && (y1 <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= (y2 / 2))
-                        || (x1 <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= (x2 / 2))      //bottom right
-                        && (y1 <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= (y2 / 2)))
+                    if ((x1 <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= (x1 + halfLength))                 //top left 
+                        && (y1 <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= (y1 + halfHeight))
+                        || (x1 <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= (x1 + halfLength))      //top right
+                        && (y1 <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= (y1 + halfHeight))
+                        || (x1 <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= (x1 + halfLength))              //bottom left
+                        && (y1 <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= (y1 + halfHeight))
+                        || (x1 <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= (x1 + halfLength))      //bottom right
+                        && (y1 <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= (y1 + halfHeight)))
                     {
                         nw.Add(boxes[i]);
                     }
                     //ne
-                    if (((x2 / 2) <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= x2)                 //top left 
-                        && (y1 <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= (y2 / 2))
-                        || ((x2 / 2) <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= x2)      //top right
-                        && (y1 <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= (y2 / 2))
-                        || ((x2 / 2) <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= x2)              //bottom left
-                        && (y1 <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= (y2 / 2))
-                        || ((x2 / 2) <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= x2)      //bottom right
-                        && (y1 <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= (y2 / 2)))
+                    if (((x1 + halfLength) <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= x2)                 //top left 
+                        && (y1 <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= (y1 + halfHeight))
+                        || ((x1 + halfLength) <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= x2)      //top right
+                        && (y1 <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= (y1 + halfHeight))
+                        || ((x1 + halfLength) <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= x2)              //bottom left
+                        && (y1 <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= (y1 + halfHeight))
+                        || ((x1 + halfLength) <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= x2)      //bottom right
+                        && (y1 <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= (y1 + halfHeight)))
                     {
                         ne.Add(boxes[i]);
                     }
                     //sw
-                    if ((x1 <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= (x2 / 2))                 //top left 
-                        && ((y2 / 2) <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= y2)
-                        || (x1 <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= (x2 / 2))      //top right
-                        && ((y2 / 2) <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= y2)
-                        || (x1 <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= (x2 / 2))              //bottom left
-                        && ((y2 / 2) <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= y2)
-                        || (x1 <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= (x2 / 2))      //bottom right
-                        && ((y2 / 2) <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= y2))
+                    if ((x1 <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= (x1 + halfLength))                 //top left 
+                        && ((y1 + halfHeight) <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= y2)
+                        || (x1 <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= (x1 + halfLength))      //top right
+                        && ((y1 + halfHeight) <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= y2)
+                        || (x1 <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= (x1 + halfLength))              //bottom left
+                        && ((y1 + halfHeight) <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= y2)
+                        || (x1 <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= (x1 + halfLength))      //bottom right
+                        && ((y1 + halfHeight) <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= y2))
                     {
                         sw.Add(boxes[i]);
                     }
                     //se
-                    if (((x2 / 2) <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= x2)                 //top left 
-                        && ((y2 / 2) <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= y2)
-                        || ((x2 / 2) <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= x2)      //top right
-                        && ((y2 / 2) <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= y2)
-                        || ((x2 / 2) <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= x2)              //bottom left
-                        && ((y2 / 2) <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= y2)
-                        || ((x2 / 2) <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= x2)      //bottom right
-                        && ((y2 / 2) <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= y2))
+                    if (((x1 + halfLength) <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= x2)                 //top left 
+                        && ((y1 + halfHeight) <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= y2)
+                        || ((x1 + halfLength) <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= x2)      //top right
+                        && ((y1 + halfHeight) <= boxes[i].Vars.collisionBox.Y && boxes[i].Vars.collisionBox.Y <= y2)
+                        || ((x1 + halfLength) <= boxes[i].Vars.collisionBox.X && boxes[i].Vars.collisionBox.X <= x2)              //bottom left
+                        && ((y1 + halfHeight) <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= y2)
+                        || ((x1 + halfLength) <= boxes[i].Vars.collisionBox.Width && boxes[i].Vars.collisionBox.Width <= x2)      //bottom right
+                        && ((y1 + halfHeight) <= boxes[i].Vars.collisionBox.Height && boxes[i].Vars.collisionBox.Height <= y2))
                     {
                         se.Add(boxes[i]);
                     }
                 }
-
+                
                 //create the new QuadTrees (leaves)
-                _nw = new QuadTree(nw, x1, x2 / 2, y1, y2 / 2);
-                _ne = new QuadTree(ne, x2 / 2, x2, y1, y2 / 2);
-                _sw = new QuadTree(sw, x1, x2 / 2, y2 / 2, y2);
-                _se = new QuadTree(se, x2 / 2, x2, y2 / 2, y2);
+                _nw = new QuadTree(nw, x1, y1, x1 + halfLength, y1 + halfHeight);
+                _ne = new QuadTree(ne, x1 + halfLength, y1, x2, y1 + halfHeight);
+                _sw = new QuadTree(sw, x1, y1 + halfHeight, x1 + halfLength, y2);
+                _se = new QuadTree(se, x1 + halfLength, y1 + halfHeight, x2, y2);
             }
         }
     }
