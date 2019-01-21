@@ -14,7 +14,7 @@ namespace UntitledPirateGame
         private int speed;
 
         public Player(int speed, int width, int height, int originX, int originY, int elevation, float rotation, bool isVisible, Texture2D sprite) 
-            : base(width, height, originX, originY, elevation, rotation, isVisible, sprite) { }
+            : base(width, height, originX, originY, elevation, rotation, isVisible, sprite) { this.speed = speed; }
 
         public void Update(GameTime gameTime)
         {

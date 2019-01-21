@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace UntitledPirateGame
 {
@@ -15,7 +16,7 @@ namespace UntitledPirateGame
         Drawer DRAWER;
         List<Chunk> Chunks;
         Texture2D Default;
-        
+        Player player;
 
         public Game1()
         {
@@ -39,7 +40,7 @@ namespace UntitledPirateGame
             Chunks.Add(new Chunk(100, 0));
             Chunks.Add(new Chunk(0, 100));
             Chunks.Add(new Chunk(100, 100));
-            Chunks[0].Add(new Entities(16, 16, 5, 5, 0, 0, true, Default));
+            
             
 
             base.Initialize();
@@ -54,8 +55,11 @@ namespace UntitledPirateGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            Default = Content.Load<Texture2D>("defaultSprite");
 
+            Default = this.Content.Load<Texture2D>("defaultSprite");
+
+            Chunks[0].Add(new Entities(16, 16, 60, 60, 0, 0, true, Default));
+            Chunks[0].Add(player = new Player(8, 16, 16, 45, 45, 0, 0, true, Default));
             // TODO: use this.Content to load your game content here
         }
 
@@ -79,7 +83,7 @@ namespace UntitledPirateGame
                 Exit();
 
             // TODO: Add your update logic here
-
+            player.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -94,19 +98,25 @@ namespace UntitledPirateGame
             {
                 if (Chunks[i].OnScreen)
                 {
+                    //Debug.Write("Chunk is on screen");
                     for (int ii = 0; ii < Chunks[i].members.Count;ii++)
                     {
                         if (Chunks[i].members[ii].OnScreen)
                         {
+                            //Debug.Write("Entity is on screen");
                             OnScreenEntities.Add(Chunks[i].members[ii]);
                         }
                     }
                 }
             }
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            Debug.WriteLine("# of On screen ents {0}",OnScreenEntities.Count);
             // TODO: Add your drawing code here
-            DRAWER.Draw(spriteBatch,OnScreenEntities);
+            if (OnScreenEntities.Count > 0)
+            {
+                DRAWER.Draw(spriteBatch, OnScreenEntities);
+            }
+            
             base.Draw(gameTime);
         }
     }

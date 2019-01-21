@@ -55,7 +55,7 @@ namespace UntitledPirateGame
         {
             get
             {
-                if (CoordinateMath.RectanglesOverLap(vars.collisionBox,Screen.ScreenRectangle))
+                if (CoordinateMath.RectanglesOverLap(Screen.ScreenRectangle,vars.collisionBox))
                 {
                     return true;
                 }

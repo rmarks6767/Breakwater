@@ -64,7 +64,7 @@ namespace UntitledPirateGame
 
             int countL = 0, countR = 0;
 
-            while(countL < left.Count && countR <= right.Count)
+            while(countL < left.Count && countR < right.Count)
             {
                 if(left.ElementAt(countL).vars.elevation < right.ElementAt(countR).vars.elevation)
                 {

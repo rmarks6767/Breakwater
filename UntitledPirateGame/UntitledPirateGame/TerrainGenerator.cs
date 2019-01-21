@@ -40,20 +40,7 @@ namespace UntitledPirateGame
             noiseMapBuilder.Build();
 
 
-            ///*
-            for (int i = 0; i <= 100; i++)
-            {
-                for(int a = 0; a <= 100; a++)
-                {
-                    Debug.Write(noiseMap[i, a]);
-                    
-                }
-
-                Debug.Write("\n");
-                
-            }
-            //*/
-            Debug.Write(noiseMap.ToString());
+            
 
         }
         
