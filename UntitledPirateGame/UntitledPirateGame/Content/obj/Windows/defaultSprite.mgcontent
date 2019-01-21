@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Japan/Desktop/Breakwater/Breakwater/UntitledPirateGame/UntitledPirateGame/Content/defaultSprite.png</SourceFile>
-  <SourceTime>2019-01-20T21:17:40.1302426-05:00</SourceTime>
-  <DestFile>C:/Users/Japan/Desktop/Breakwater/Breakwater/UntitledPirateGame/UntitledPirateGame/Content/bin/Windows/defaultSprite.xnb</DestFile>
-  <DestTime>2019-01-20T21:19:27.5675951-05:00</DestTime>
+  <SourceFile>C:/Users/Japan/Desktop/Breakwater/UntitledPirateGame/UntitledPirateGame/Content/defaultSprite.png</SourceFile>
+  <SourceTime>2019-01-20T22:44:31.9611988-05:00</SourceTime>
+  <DestFile>C:/Users/Japan/Desktop/Breakwater/UntitledPirateGame/UntitledPirateGame/Content/bin/Windows/defaultSprite.xnb</DestFile>
+  <DestTime>2019-01-21T00:20:46.3226817-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

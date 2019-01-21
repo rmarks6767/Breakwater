@@ -10,7 +10,7 @@ namespace UntitledPirateGame
     class Chunk
     {
         int x1, y1;
-        const int width = 100;
+        const int width = 10000;
         const int height = width;
         public List<Entities> members = new List<Entities>();
 

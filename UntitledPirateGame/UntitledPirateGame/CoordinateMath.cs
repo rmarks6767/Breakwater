@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace UntitledPirateGame
 {
@@ -21,7 +22,7 @@ namespace UntitledPirateGame
         /// <returns>Whether or not the point is contained inside of the bounds</returns>
         public static bool BoundsContain(int boundx1, int boundy1, int boundx2, int boundy2, int pointx, int pointy)
         {
-            if (pointx > boundx1 && pointx < boundx2 && pointy > boundy1 && pointy < boundy2)
+            if (pointx >= boundx1 && pointx <= boundx2 && pointy >= boundy1 && pointy <= boundy2)
             {
                 return true;
             }
@@ -41,7 +42,7 @@ namespace UntitledPirateGame
             int boundy1 = Bounds.Y;
             int boundx2 = boundx1 + Bounds.Width;
             int boundy2 = boundy1 + Bounds.Height;
-            if (pointx > boundx1 && pointx < boundx2 && pointy > boundy1 && pointy < boundy2)
+            if (pointx >= boundx1 && pointx <= boundx2 && pointy >= boundy1 && pointy <= boundy2)
             {
                 return true;
             }
@@ -62,7 +63,7 @@ namespace UntitledPirateGame
             int boundy2 = boundy1 + Bounds.Height;
             int pointx = pt.X;
             int pointy = pt.Y;
-            if (pointx > boundx1 && pointx < boundx2 && pointy > boundy1 && pointy < boundy2)
+            if (pointx >= boundx1 && pointx <= boundx2 && pointy >= boundy1 && pointy <= boundy2)
             {
                 return true;
             }

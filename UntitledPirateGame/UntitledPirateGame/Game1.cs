@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace UntitledPirateGame
 {
@@ -15,12 +16,17 @@ namespace UntitledPirateGame
         Drawer DRAWER;
         List<Chunk> Chunks;
         Texture2D Default;
-        
+        Player player;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.IsFullScreen = true;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
+
+
 
         }
 
@@ -36,10 +42,9 @@ namespace UntitledPirateGame
             DRAWER = new Drawer();
             Chunks = new List<Chunk>();
             Chunks.Add(new Chunk(0, 0));
-            Chunks.Add(new Chunk(100, 0));
-            Chunks.Add(new Chunk(0, 100));
-            Chunks.Add(new Chunk(100, 100));
-            Chunks[0].Add(new Entities(16, 16, 5, 5, 0, 0, true, Default));
+            
+            
+            
             
 
             base.Initialize();
@@ -54,8 +59,15 @@ namespace UntitledPirateGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            Default = Content.Load<Texture2D>("defaultSprite");
 
+            Default = this.Content.Load<Texture2D>("defaultSprite");
+
+            Chunks[0].Add(new Entities(16, 16, 60, 60, 0, 0, true, Default));
+            Chunks[0].Add(new Entities(16, 16, 90, 60, 0, 0, true, Default));
+            Chunks[0].Add(new Entities(16, 16, 60, 10, 0, 0, true, Default));
+            Chunks[0].Add(new Entities(16, 16, 70, 10, 0, 0, true, Default));
+            Chunks[0].Add(new Entities(16, 16, 30, 70, 0, 0, true, Default));
+            Chunks[0].Add(player = new Player(100, 16, 16, 200, 200, 0, 0, true, Default));
             // TODO: use this.Content to load your game content here
         }
 
@@ -79,7 +91,9 @@ namespace UntitledPirateGame
                 Exit();
 
             // TODO: Add your update logic here
-
+            player.Update(gameTime);
+            Screen.X1 = player.vars.collisionBox.Center.X - ((Screen.X2 - Screen.X1) / 2);
+            Screen.Y1 = player.vars.collisionBox.Center.Y - ((Screen.Y2 - Screen.Y1) / 2);
             base.Update(gameTime);
         }
 
@@ -94,19 +108,25 @@ namespace UntitledPirateGame
             {
                 if (Chunks[i].OnScreen)
                 {
+                    //Debug.Write("Chunk is on screen");
                     for (int ii = 0; ii < Chunks[i].members.Count;ii++)
                     {
                         if (Chunks[i].members[ii].OnScreen)
                         {
+                            //Debug.Write("Entity is on screen");
                             OnScreenEntities.Add(Chunks[i].members[ii]);
                         }
                     }
                 }
             }
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            Debug.WriteLine("# of On screen ents {0}",OnScreenEntities.Count);
             // TODO: Add your drawing code here
-            DRAWER.Draw(spriteBatch,OnScreenEntities);
+            if (OnScreenEntities.Count > 0)
+            {
+                DRAWER.Draw(spriteBatch, OnScreenEntities);
+            }
+            
             base.Draw(gameTime);
         }
     }
