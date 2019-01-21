@@ -18,10 +18,10 @@ namespace UntitledPirateGame
             foreach(Entities entity in sortedEntities)
             {
                 spriteBatch.Draw(
-                    texture: entity.Vars.sprite,
-                    destinationRectangle: entity.Vars.collisionBox,
-                    rotation: entity.Vars.rotation,
-                    origin: new Vector2(entity.Vars.collisionBox.Width / 2, entity.Vars.collisionBox.Height / 2)
+                    texture: entity.vars.sprite,
+                    destinationRectangle: entity.vars.collisionBox,
+                    rotation: entity.vars.rotation,
+                    origin: new Vector2(entity.vars.collisionBox.Width / 2, entity.vars.collisionBox.Height / 2)
                     );
             }
             spriteBatch.End();
@@ -66,7 +66,7 @@ namespace UntitledPirateGame
 
             while(countL < left.Count && countR <= right.Count)
             {
-                if(left.ElementAt(countL).Vars.elevation < right.ElementAt(countR).Vars.elevation)
+                if(left.ElementAt(countL).vars.elevation < right.ElementAt(countR).vars.elevation)
                 {
                     result.Add(left.ElementAt(countL));
                     countL++;

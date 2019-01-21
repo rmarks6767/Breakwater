@@ -55,7 +55,7 @@ namespace UntitledPirateGame
         {
             get
             {
-                if (CoordinateMath.RectanglesOverLap(Vars.collisionBox,Screen.ScreenRectangle))
+                if (CoordinateMath.RectanglesOverLap(vars.collisionBox,Screen.ScreenRectangle))
                 {
                     return true;
                 }
@@ -64,9 +64,7 @@ namespace UntitledPirateGame
         }
 
         //creating the struct so it may be accessed outside of the class
-        private EntityVariables vars;
-
-        public EntityVariables Vars { get { return vars; } }
+        public EntityVariables vars;
 
         public Entities(int width, int height, int originX, int originY, int elevation, float rotation, bool isVisible, Texture2D sprite)
         {

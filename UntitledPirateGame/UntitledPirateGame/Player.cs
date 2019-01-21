@@ -9,10 +9,33 @@ using Microsoft.Xna.Framework.Input;
 
 namespace UntitledPirateGame
 {
-    class Player
+    class Player : Entities
     {
-        private Texture2D playerTexture;
-        private Vector2 position;
-        private double rotation;
+        private int speed;
+
+        public Player(int speed, int width, int height, int originX, int originY, int elevation, float rotation, bool isVisible, Texture2D sprite) 
+            : base(width, height, originX, originY, elevation, rotation, isVisible, sprite) { }
+
+        public void Update(GameTime gameTime)
+        {
+            if(Keyboard.GetState().IsKeyDown(Keys.W))
+            {
+                vars.originY -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
+            if(Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                vars.originY += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
+            if(Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                vars.originX -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
+            if(Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                vars.originX += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
+
+            vars.rotation = Pointer.GetAngleBetween(this);
+        }
     }
 }
