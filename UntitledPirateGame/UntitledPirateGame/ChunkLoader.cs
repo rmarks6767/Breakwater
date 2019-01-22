@@ -49,7 +49,7 @@ namespace UntitledPirateGame
                     Chunk[,] adjChunks = new Chunk[3, 3];
                     if(i != 0 && j != 0)
                     {
-                        adjChunks[i, j] =
+                        
                     }
                 }
             }

@@ -43,7 +43,7 @@ namespace UntitledPirateGame
             // TODO: Add your initialization logic here
             DRAWER = new Drawer();
             Chunks = new List<Chunk>();
-            Chunks.Add(new Chunk(0, 0));
+            Chunks.Add(new Chunk(0, 0, 100000));
             
             
             

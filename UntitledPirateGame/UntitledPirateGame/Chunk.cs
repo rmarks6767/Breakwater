@@ -11,7 +11,7 @@ namespace UntitledPirateGame
     {
         int x1, y1;
         int width, height;
-        public List<Entities> members = new List<Entities>();
+        public List<Entity> members = new List<Entity>();
         private Chunk[,] adjChunks = new Chunk[3, 3];
 
 
