@@ -47,12 +47,51 @@ namespace UntitledPirateGame
                 for (int j = 0; j < chunkMap.GetLength(1); j++)
                 {
                     Chunk[,] adjChunks = new Chunk[3, 3];
-                    if(i != 0 && j != 0)
+                    if (i != 0)
                     {
-                        
+                        adjChunks[0, 1] = chunkMap[i - 1, j];
+                        if (j != 0)
+                        {
+                            adjChunks[0, 0] = chunkMap[i - 1, j - 1];
+                        }
+                        if (j != chunkMap.GetLength(0))
+                        {
+                            adjChunks[0, 2] = chunkMap[i - 1, j + 1];
+                        }
                     }
+                    if (j != 0)
+                    {
+                        adjChunks[1, 0] = chunkMap[i, j - 1];
+                        if (i != chunkMap.GetLength(1))
+                        {
+                            adjChunks[2, 0] = chunkMap[i + 1, j - 1];
+                        }
+                    }
+                    if (i != chunkMap.GetLength(1))
+                    {
+                        adjChunks[2, 1] = chunkMap[i + 1, j];
+                        if (j != 0)
+                        {
+                            adjChunks[2, 0] = chunkMap[i + 1, j - 1];
+                        }
+                        if (j != chunkMap.GetLength(0))
+                        {
+                            adjChunks[2, 2] = chunkMap[i + 1, j + 1];
+                        }
+                    }
+                    if (j != chunkMap.GetLength(0))
+                    {
+                        adjChunks[1, 2] = chunkMap[i, j + 1];
+                        if (j != 0)
+                        {
+                            adjChunks[0, 2] = chunkMap[i - 1, j + 1];
+                        }
+                    }
+                    adjChunks[1, 1] = chunkMap[i, j];
+                    chunkMap[i, j].StoreAdjChunks(adjChunks);
                 }
             }
+            
         }
     }
 }
