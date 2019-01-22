@@ -45,7 +45,7 @@ namespace UntitledPirateGame
 
             openNodes.Add(startNode);
 
-            for (int i = 0; i < grid.Height; i++)
+            /*for (int i = 0; i < grid.Height; i++)
             {
                 for (int g = 0; g < grid.Width; g++)
                 {
@@ -54,7 +54,7 @@ namespace UntitledPirateGame
                         openNodes.Add(new AstarNode(new Vector2(i, g), startPoint, endPoint));
                     }
                 }
-            }
+            }*/
 
             while (openNodes.Count > 0)
             {
@@ -66,7 +66,50 @@ namespace UntitledPirateGame
                     return;
                 }
 
+                //add the nodes that are around it to the open nodes
+                int X = (int)openNodes[0].NodePos.X;
+                int Y = (int)openNodes[0].NodePos.Y;
 
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X + 1, Y] != 'X')
+                {
+                    openNodes.Add(new AstarNode(new Vector2(X + 1, Y), startPoint, endPoint));
+                }
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X - 1, Y] != 'X')
+                {
+                    openNodes.Add(new AstarNode(new Vector2(X - 1, Y), startPoint, endPoint));
+                }
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X, Y + 1] != 'X')
+                {
+                    openNodes.Add(new AstarNode(new Vector2(X, Y + 1), startPoint, endPoint));
+                }
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X, Y - 1] != 'X')
+                {
+                    openNodes.Add(new AstarNode(new Vector2(X, Y - 1), startPoint, endPoint));
+                }
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X + 1, Y + 1] != 'X')
+                {
+                    openNodes.Add(new AstarNode(new Vector2(X + 1, Y + 1), startPoint, endPoint));
+                }
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X + 1, Y - 1] != 'X')
+                {
+                    openNodes.Add(new AstarNode(new Vector2(X + 1, Y - 1), startPoint, endPoint));
+                }
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X - 1, Y + 1] != 'X')
+                {
+                    openNodes.Add(new AstarNode(new Vector2(X - 1, Y + 1), startPoint, endPoint));
+                }
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X - 1, Y + 1] != 'X')
+                {
+                    openNodes.Add(new AstarNode(new Vector2(X - 1, Y - 1), startPoint, endPoint));
+                }
+
+                //starts at 1 because that is the parent node
+                for (int i = 1; i < openNodes.Count - 1; i++)
+                {
+                    int successorCurrentCost = openNodes[i].F;
+
+
+                }
             }
         }
     }
@@ -89,5 +132,6 @@ namespace UntitledPirateGame
             this.g = (int)Math.Sqrt(Math.Pow((nodePos.X - startPos.X), 2) + Math.Pow((nodePos.Y - startPos.Y), 2)); ;
             this.f = h + g;
         }
+
     }
 }
