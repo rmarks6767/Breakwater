@@ -93,7 +93,7 @@ namespace UntitledPirateGame
 
         public void StoreAdjChunks(Chunk[,] chunks)
         {
-            
+            adjChunks = chunks;
         }
     }
 }
