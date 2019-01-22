@@ -16,15 +16,17 @@ namespace UntitledPirateGame
         Drawer DRAWER;
         List<Chunk> Chunks;
         Texture2D Default;
+        Texture2D Background;
         Player player;
+        Entity bckgrnd;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.IsFullScreen = true;
-            graphics.PreferredBackBufferWidth = 1920;
-            graphics.PreferredBackBufferHeight = 1080;
+            //graphics.IsFullScreen = true;
+            //graphics.PreferredBackBufferWidth = 1920;
+            //graphics.PreferredBackBufferHeight = 1080;
 
 
 
@@ -61,13 +63,10 @@ namespace UntitledPirateGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Default = this.Content.Load<Texture2D>("defaultSprite");
+            Background = this.Content.Load<Texture2D>("testBackground");
 
-            Chunks[0].Add(new Entities(16, 16, 60, 60, 0, 0, true, Default));
-            Chunks[0].Add(new Entities(16, 16, 90, 60, 0, 0, true, Default));
-            Chunks[0].Add(new Entities(16, 16, 60, 10, 0, 0, true, Default));
-            Chunks[0].Add(new Entities(16, 16, 70, 10, 0, 0, true, Default));
-            Chunks[0].Add(new Entities(16, 16, 30, 70, 0, 0, true, Default));
-            Chunks[0].Add(player = new Player(100, 16, 16, 200, 200, 0, 0, true, Default));
+            Chunks[0].Add(bckgrnd = new Entity(4096, 4096, 0, 0, 0, 0, true, Background));
+            Chunks[0].Add(player = new Player(100, 16, 16, 0, 0, 1, 0, true, Default));
             // TODO: use this.Content to load your game content here
         }
 
@@ -92,8 +91,8 @@ namespace UntitledPirateGame
 
             // TODO: Add your update logic here
             player.Update(gameTime);
-            Screen.X1 = player.vars.collisionBox.Center.X - ((Screen.X2 - Screen.X1) / 2);
-            Screen.Y1 = player.vars.collisionBox.Center.Y - ((Screen.Y2 - Screen.Y1) / 2);
+            Screen.X1 = player.vars.Rectangle.Center.X - ((Screen.X2 - Screen.X1) / 2);
+            Screen.Y1 = player.vars.Rectangle.Center.Y - ((Screen.Y2 - Screen.Y1) / 2);
             base.Update(gameTime);
         }
 
@@ -103,7 +102,7 @@ namespace UntitledPirateGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            List<Entities> OnScreenEntities = new List<Entities>();
+            List<Entity> OnScreenEntities = new List<Entity>();
             for (int i = 0; i < Chunks.Count; i++)
             {
                 if (Chunks[i].OnScreen)
@@ -119,8 +118,38 @@ namespace UntitledPirateGame
                     }
                 }
             }
+            int px = 0;
+            int py = 0;
+            bool pos = false;
+            int bx = 0;
+            int by = 0;
+            bool bos = false;
+            if (bckgrnd != null)
+            {
+                bx = bckgrnd.vars.Rectangle.X;
+                by = bckgrnd.vars.Rectangle.Y;
+                bos = bckgrnd.OnScreen;
+            }
+            if (player != null)
+            {
+                px = player.vars.Rectangle.X;
+                py = player.vars.Rectangle.Y;
+                pos = player.OnScreen;
+            }
+        
+            Debug.WriteLine(
+                "Screen ({0},{1})\n" +
+                "Player ({2},{3})\n" +
+                "Background ({4},{5})\n" +
+                "Player On Screen {6}\n" +
+                "Background On Screen {7}\n",Screen.X1,Screen.Y1,
+                px,py,
+                bx,by,
+                pos,bos
+
+                
+                );
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            Debug.WriteLine("# of On screen ents {0}",OnScreenEntities.Count);
             // TODO: Add your drawing code here
             if (OnScreenEntities.Count > 0)
             {
