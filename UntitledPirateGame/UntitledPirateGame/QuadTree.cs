@@ -40,50 +40,50 @@ namespace UntitledPirateGame
                 {
                     
                     //nw
-                    if ((x1 <= boxes[i].vars.Rectangle.X && boxes[i].vars.Rectangle.X <= (x1 + halfLength))                 //top left 
-                        && (y1 <= boxes[i].vars.Rectangle.Y && boxes[i].vars.Rectangle.Y <= (y1 + halfHeight))
-                        || (x1 <= boxes[i].vars.Rectangle.Width && boxes[i].vars.Rectangle.Width <= (x1 + halfLength))      //top right
-                        && (y1 <= boxes[i].vars.Rectangle.Y && boxes[i].vars.Rectangle.Y <= (y1 + halfHeight))
-                        || (x1 <= boxes[i].vars.Rectangle.X && boxes[i].vars.Rectangle.X <= (x1 + halfLength))              //bottom left
-                        && (y1 <= boxes[i].vars.Rectangle.Height && boxes[i].vars.Rectangle.Height <= (y1 + halfHeight))
-                        || (x1 <= boxes[i].vars.Rectangle.Width && boxes[i].vars.Rectangle.Width <= (x1 + halfLength))      //bottom right
-                        && (y1 <= boxes[i].vars.Rectangle.Height && boxes[i].vars.Rectangle.Height <= (y1 + halfHeight)))
+                    if ((x1 <= boxes[i].vars.CollisionRectangle.X && boxes[i].vars.CollisionRectangle.X <= (x1 + halfLength))                 //top left 
+                        && (y1 <= boxes[i].vars.CollisionRectangle.Y && boxes[i].vars.CollisionRectangle.Y <= (y1 + halfHeight))
+                        || (x1 <= boxes[i].vars.CollisionRectangle.Width && boxes[i].vars.CollisionRectangle.Width <= (x1 + halfLength))      //top right
+                        && (y1 <= boxes[i].vars.CollisionRectangle.Y && boxes[i].vars.CollisionRectangle.Y <= (y1 + halfHeight))
+                        || (x1 <= boxes[i].vars.CollisionRectangle.X && boxes[i].vars.CollisionRectangle.X <= (x1 + halfLength))              //bottom left
+                        && (y1 <= boxes[i].vars.CollisionRectangle.Height && boxes[i].vars.CollisionRectangle.Height <= (y1 + halfHeight))
+                        || (x1 <= boxes[i].vars.CollisionRectangle.Width && boxes[i].vars.CollisionRectangle.Width <= (x1 + halfLength))      //bottom right
+                        && (y1 <= boxes[i].vars.CollisionRectangle.Height && boxes[i].vars.CollisionRectangle.Height <= (y1 + halfHeight)))
                     {
                         nw.Add(boxes[i]);
                     }
                     //ne
-                    if (((x1 + halfLength) <= boxes[i].vars.Rectangle.X && boxes[i].vars.Rectangle.X <= x2)                 //top left 
-                        && (y1 <= boxes[i].vars.Rectangle.Y && boxes[i].vars.Rectangle.Y <= (y1 + halfHeight))
-                        || ((x1 + halfLength) <= boxes[i].vars.Rectangle.Width && boxes[i].vars.Rectangle.Width <= x2)      //top right
-                        && (y1 <= boxes[i].vars.Rectangle.Y && boxes[i].vars.Rectangle.Y <= (y1 + halfHeight))
-                        || ((x1 + halfLength) <= boxes[i].vars.Rectangle.X && boxes[i].vars.Rectangle.X <= x2)              //bottom left
-                        && (y1 <= boxes[i].vars.Rectangle.Height && boxes[i].vars.Rectangle.Height <= (y1 + halfHeight))
-                        || ((x1 + halfLength) <= boxes[i].vars.Rectangle.Width && boxes[i].vars.Rectangle.Width <= x2)      //bottom right
-                        && (y1 <= boxes[i].vars.Rectangle.Height && boxes[i].vars.Rectangle.Height <= (y1 + halfHeight)))
+                    if (((x1 + halfLength) <= boxes[i].vars.CollisionRectangle.X && boxes[i].vars.CollisionRectangle.X <= x2)                 //top left 
+                        && (y1 <= boxes[i].vars.CollisionRectangle.Y && boxes[i].vars.CollisionRectangle.Y <= (y1 + halfHeight))
+                        || ((x1 + halfLength) <= boxes[i].vars.CollisionRectangle.Width && boxes[i].vars.CollisionRectangle.Width <= x2)      //top right
+                        && (y1 <= boxes[i].vars.CollisionRectangle.Y && boxes[i].vars.CollisionRectangle.Y <= (y1 + halfHeight))
+                        || ((x1 + halfLength) <= boxes[i].vars.CollisionRectangle.X && boxes[i].vars.CollisionRectangle.X <= x2)              //bottom left
+                        && (y1 <= boxes[i].vars.CollisionRectangle.Height && boxes[i].vars.CollisionRectangle.Height <= (y1 + halfHeight))
+                        || ((x1 + halfLength) <= boxes[i].vars.CollisionRectangle.Width && boxes[i].vars.CollisionRectangle.Width <= x2)      //bottom right
+                        && (y1 <= boxes[i].vars.CollisionRectangle.Height && boxes[i].vars.CollisionRectangle.Height <= (y1 + halfHeight)))
                     {
                         ne.Add(boxes[i]);
                     }
                     //sw
-                    if ((x1 <= boxes[i].vars.Rectangle.X && boxes[i].vars.Rectangle.X <= (x1 + halfLength))                 //top left 
-                        && ((y1 + halfHeight) <= boxes[i].vars.Rectangle.Y && boxes[i].vars.Rectangle.Y <= y2)
-                        || (x1 <= boxes[i].vars.Rectangle.Width && boxes[i].vars.Rectangle.Width <= (x1 + halfLength))      //top right
-                        && ((y1 + halfHeight) <= boxes[i].vars.Rectangle.Y && boxes[i].vars.Rectangle.Y <= y2)
-                        || (x1 <= boxes[i].vars.Rectangle.X && boxes[i].vars.Rectangle.X <= (x1 + halfLength))              //bottom left
-                        && ((y1 + halfHeight) <= boxes[i].vars.Rectangle.Height && boxes[i].vars.Rectangle.Height <= y2)
-                        || (x1 <= boxes[i].vars.Rectangle.Width && boxes[i].vars.Rectangle.Width <= (x1 + halfLength))      //bottom right
-                        && ((y1 + halfHeight) <= boxes[i].vars.Rectangle.Height && boxes[i].vars.Rectangle.Height <= y2))
+                    if ((x1 <= boxes[i].vars.CollisionRectangle.X && boxes[i].vars.CollisionRectangle.X <= (x1 + halfLength))                 //top left 
+                        && ((y1 + halfHeight) <= boxes[i].vars.CollisionRectangle.Y && boxes[i].vars.CollisionRectangle.Y <= y2)
+                        || (x1 <= boxes[i].vars.CollisionRectangle.Width && boxes[i].vars.CollisionRectangle.Width <= (x1 + halfLength))      //top right
+                        && ((y1 + halfHeight) <= boxes[i].vars.CollisionRectangle.Y && boxes[i].vars.CollisionRectangle.Y <= y2)
+                        || (x1 <= boxes[i].vars.CollisionRectangle.X && boxes[i].vars.CollisionRectangle.X <= (x1 + halfLength))              //bottom left
+                        && ((y1 + halfHeight) <= boxes[i].vars.CollisionRectangle.Height && boxes[i].vars.CollisionRectangle.Height <= y2)
+                        || (x1 <= boxes[i].vars.CollisionRectangle.Width && boxes[i].vars.CollisionRectangle.Width <= (x1 + halfLength))      //bottom right
+                        && ((y1 + halfHeight) <= boxes[i].vars.CollisionRectangle.Height && boxes[i].vars.CollisionRectangle.Height <= y2))
                     {
                         sw.Add(boxes[i]);
                     }
                     //se
-                    if (((x1 + halfLength) <= boxes[i].vars.Rectangle.X && boxes[i].vars.Rectangle.X <= x2)                 //top left 
-                        && ((y1 + halfHeight) <= boxes[i].vars.Rectangle.Y && boxes[i].vars.Rectangle.Y <= y2)
-                        || ((x1 + halfLength) <= boxes[i].vars.Rectangle.Width && boxes[i].vars.Rectangle.Width <= x2)      //top right
-                        && ((y1 + halfHeight) <= boxes[i].vars.Rectangle.Y && boxes[i].vars.Rectangle.Y <= y2)
-                        || ((x1 + halfLength) <= boxes[i].vars.Rectangle.X && boxes[i].vars.Rectangle.X <= x2)              //bottom left
-                        && ((y1 + halfHeight) <= boxes[i].vars.Rectangle.Height && boxes[i].vars.Rectangle.Height <= y2)
-                        || ((x1 + halfLength) <= boxes[i].vars.Rectangle.Width && boxes[i].vars.Rectangle.Width <= x2)      //bottom right
-                        && ((y1 + halfHeight) <= boxes[i].vars.Rectangle.Height && boxes[i].vars.Rectangle.Height <= y2))
+                    if (((x1 + halfLength) <= boxes[i].vars.CollisionRectangle.X && boxes[i].vars.CollisionRectangle.X <= x2)                 //top left 
+                        && ((y1 + halfHeight) <= boxes[i].vars.CollisionRectangle.Y && boxes[i].vars.CollisionRectangle.Y <= y2)
+                        || ((x1 + halfLength) <= boxes[i].vars.CollisionRectangle.Width && boxes[i].vars.CollisionRectangle.Width <= x2)      //top right
+                        && ((y1 + halfHeight) <= boxes[i].vars.CollisionRectangle.Y && boxes[i].vars.CollisionRectangle.Y <= y2)
+                        || ((x1 + halfLength) <= boxes[i].vars.CollisionRectangle.X && boxes[i].vars.CollisionRectangle.X <= x2)              //bottom left
+                        && ((y1 + halfHeight) <= boxes[i].vars.CollisionRectangle.Height && boxes[i].vars.CollisionRectangle.Height <= y2)
+                        || ((x1 + halfLength) <= boxes[i].vars.CollisionRectangle.Width && boxes[i].vars.CollisionRectangle.Width <= x2)      //bottom right
+                        && ((y1 + halfHeight) <= boxes[i].vars.CollisionRectangle.Height && boxes[i].vars.CollisionRectangle.Height <= y2))
                     {
                         se.Add(boxes[i]);
                     }

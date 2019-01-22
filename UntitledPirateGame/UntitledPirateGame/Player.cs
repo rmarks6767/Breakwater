@@ -20,19 +20,31 @@ namespace UntitledPirateGame
         {
             if(Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                vars.Rectangle.Y -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.CollisionRectangle.Y -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.DrawingVector.Y -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.CollisonCircle.Y -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+
             }
             if(Keyboard.GetState().IsKeyDown(Keys.S))
             {
-                vars.Rectangle.Y += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.CollisionRectangle.Y += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.DrawingVector.Y += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.CollisonCircle.Y += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+
             }
-            if(Keyboard.GetState().IsKeyDown(Keys.A))
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                vars.Rectangle.X -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.CollisionRectangle.X -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.DrawingVector.X -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.CollisonCircle.X -= (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+
             }
-            if(Keyboard.GetState().IsKeyDown(Keys.D))
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
-                vars.Rectangle.X += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.CollisionRectangle.X += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.DrawingVector.X += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+                vars.CollisonCircle.X += (int)(speed * gameTime.ElapsedGameTime.TotalSeconds);
+
             }
 
             vars.rotation = Pointer.GetAngleBetween(this);

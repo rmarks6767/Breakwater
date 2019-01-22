@@ -12,16 +12,51 @@ namespace UntitledPirateGame
     static class Screen
     {
 
-        static int x1, y1 = 0;
+        static int x, y;
+        static public GraphicsDevice GraphicsDevice;
         static Game1 game;
+        
+        public static int ScreenWidth
+        {
+            get
+            {
+                return GraphicsDevice.Viewport.Width;
+            }
+            
+        }
+
+        public static int ScreenHeight
+        {
+            get
+            {
+                return GraphicsDevice.Viewport.Height;
+            }
+        }
+
+        /// <summary>
+        /// Origin X value of screen
+        /// </summary>
+        public static int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+        /// <summary>
+        /// Origin Y value of the screen
+        /// </summary>
+        public static int Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
 
         /// <summary>
         /// The screen's world x1 coordinate
         /// </summary>
         public static int X1
         {
-            get { return x1; }
-            set { x1 = value; }
+            get { return X - (ScreenWidth/2); }
         }
 
         /// <summary>
@@ -29,8 +64,7 @@ namespace UntitledPirateGame
         /// </summary>
         public static int Y1
         {
-            get { return y1; }
-            set { y1 = value; }
+            get { return Y - (ScreenHeight/2); }
         }
 
         /// <summary>
@@ -38,7 +72,7 @@ namespace UntitledPirateGame
         /// </summary>
         public static int X2
         {
-            get { return x1 + game.GraphicsDevice.Viewport.Width; }
+            get { return X1 + ScreenWidth; }
         }
 
         /// <summary>
@@ -46,14 +80,13 @@ namespace UntitledPirateGame
         /// </summary>
         public static int Y2
         {
-            get { return y1 + game.GraphicsDevice.Viewport.Height; }
+            get { return Y1 + ScreenHeight; }
         }
 
         public static Rectangle ScreenRectangle
         {
             get {
-                Rectangle rect = new Rectangle(x1, y1, X2 - x1, Y2 - y1);
-                return rect;
+                return new Rectangle(X1, Y1, ScreenWidth, ScreenHeight);
             }
             
         }
@@ -65,9 +98,8 @@ namespace UntitledPirateGame
         public static void SetGame(Game1 g)
         {
             game = g;
+            GraphicsDevice = game.GraphicsDevice;
         }
-
-
 
     }
 }

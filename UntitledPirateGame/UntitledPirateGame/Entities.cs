@@ -25,9 +25,19 @@ namespace UntitledPirateGame
             public Texture2D sprite;
 
             /// <summary>
-            /// Collision and drawing rectangle
+            /// Circle used for collisions
             /// </summary>
-            public Rectangle Rectangle;
+            public Circle CollisonCircle;
+
+            /// <summary>
+            /// Vector used for drawing
+            /// </summary>
+            public Vector2 DrawingVector;
+
+            /// <summary>
+            /// Rectangle used for collisions
+            /// </summary>
+            public Rectangle CollisionRectangle;
 
             /// <summary>
             /// Elevation of entity drawn on the screen
@@ -52,7 +62,7 @@ namespace UntitledPirateGame
         {
             get
             {
-                if (CoordinateMath.RectanglesOverLap(Screen.ScreenRectangle,vars.Rectangle) || CoordinateMath.RectanglesOverLap(vars.Rectangle,Screen.ScreenRectangle))
+                if (CoordinateMath.RectanglesOverLap(Screen.ScreenRectangle,vars.CollisionRectangle) || CoordinateMath.RectanglesOverLap(vars.CollisionRectangle,Screen.ScreenRectangle))
                 {
                     return true;
                 }
@@ -65,13 +75,15 @@ namespace UntitledPirateGame
         /// </summary>
         public EntityVariables vars;
 
-        public Entity(int width, int height, int x, int y, int elevation, float rotation, bool isVisible, Texture2D sprite)
+        public Entity(int width, int height, int originx, int originy, int elevation, float rotation, bool isVisible, Texture2D sprite)
         {
             //create the struct to hold the variables for the entity
             vars = new EntityVariables
             {
-                //set the collision box based on the origin
-                Rectangle = new Rectangle(x,y, width, height),
+
+                DrawingVector = new Vector2(originx, originy),
+                CollisionRectangle = new Rectangle(originx - (width / 2), originy - (height / 2), width, height),
+                CollisonCircle = new Circle(originx, originy, width / 2),
                 elevation = elevation,
                 isVisible = isVisible,
                 sprite = sprite,

@@ -17,13 +17,13 @@ namespace UntitledPirateGame
 
         public static float GetAngleBetween(Entity entity)
         {
-            if(entity.vars.Rectangle.Center.X >= Position.X)
+            if(entity.vars.CollisionRectangle.Center.X >= Position.X)
             {
-                return (float)Math.Atan((Position.Y - entity.vars.Rectangle.Center.Y) / (Position.X - entity.vars.Rectangle.Center.X));
+                return (float)Math.Atan((Position.Y - entity.vars.CollisionRectangle.Center.Y) / (Position.X - entity.vars.CollisionRectangle.Center.X));
             }
             else
             {
-                return (float)(Math.Atan((Position.Y - entity.vars.Rectangle.Center.Y) / (Position.X - entity.vars.Rectangle.Center.X)) + Math.PI);
+                return (float)(Math.Atan((Position.Y - entity.vars.CollisionRectangle.Center.Y) / (Position.X - entity.vars.CollisionRectangle.Center.X)) + Math.PI);
             }
         }
     }

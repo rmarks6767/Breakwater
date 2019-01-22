@@ -17,16 +17,13 @@ namespace UntitledPirateGame
             spriteBatch.Begin();
             foreach(Entity entity in sortedEntity)
             {
-                Rectangle rect = new Rectangle(
-                    entity.vars.Rectangle.X - Screen.X1,
-                    entity.vars.Rectangle.Y - Screen.Y1,
-                    entity.vars.Rectangle.Width,
-                    entity.vars.Rectangle.Height
-                    );
+                //Thanks Aidan
+                Vector2 toDraw = new Vector2(entity.vars.DrawingVector.X - Screen.X + Screen.ScreenWidth/2, entity.vars.DrawingVector.Y - Screen.Y + Screen.ScreenHeight/2);
                 spriteBatch.Draw(
                     texture: entity.vars.sprite,
-                    destinationRectangle: rect,
-                    rotation: entity.vars.rotation
+                    position:toDraw,
+                    rotation: entity.vars.rotation,
+                    origin: new Vector2(entity.vars.sprite.Width/2, entity.vars.sprite.Height / 2)
                     );
             }
             spriteBatch.End();
