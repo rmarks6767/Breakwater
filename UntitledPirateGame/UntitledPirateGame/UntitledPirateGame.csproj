@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Chunk.cs" />
+    <Compile Include="ChunkLoader.cs" />
     <Compile Include="CollisionSystem.cs" />
     <Compile Include="CoordinateMath.cs" />
     <Compile Include="Entities.cs" />
