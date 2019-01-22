@@ -41,7 +41,6 @@ namespace UntitledPirateGame
 
             AstarNode startNode = new AstarNode(startPoint, startPoint, endPoint);
 
-
             AstarNode endNode = new AstarNode(endPoint, startPoint, endPoint);
 
             openNodes.Add(startNode);
@@ -60,13 +59,14 @@ namespace UntitledPirateGame
             while (openNodes.Count > 0)
             {
                 AstarNode currentNode = openNodes[0];
-                int currentIndex = 0;
 
                 if (openNodes[0].NodePos.X == endPoint.X
                     && openNodes[0].NodePos.Y == endPoint.Y)
                 {
-
+                    return;
                 }
+
+
             }
         }
     }
