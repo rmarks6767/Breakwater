@@ -10,6 +10,12 @@ namespace UntitledPirateGame
     class Grid
     {
         public char[,] grid;
+        private int height;
+        private int width;
+
+        public int Height { get { return height; } }
+        public int Width { get { return Width; } }
+
 
         /// <summary>
         /// Initializes the grid with just blank points 
