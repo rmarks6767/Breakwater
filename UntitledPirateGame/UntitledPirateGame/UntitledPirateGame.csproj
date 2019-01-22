@@ -46,7 +46,9 @@
     <Compile Include="CoordinateMath.cs" />
     <Compile Include="Entities.cs" />
     <Compile Include="Drawer.cs" />
+    <Compile Include="FindPath.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Grid.cs" />
     <Compile Include="ICollidable.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Pointer.cs" />
