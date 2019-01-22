@@ -12,9 +12,8 @@ namespace UntitledPirateGame
         private Vector2 startPoint;
         private Vector2 endPoint;
         private Grid grid;
-        private List<Vector2> checkedNodes;
-        private List<Vector2> nodesToCheck;
 
+        public Grid Grid { get { return grid; } }
 
         /// <summary>
         /// This class will ultimately return the path at which an npc has to take to get to a given spot
@@ -30,20 +29,65 @@ namespace UntitledPirateGame
         }
 
         /// <summary>
-        /// 
+        /// The actual algorithm for the algorithm
         /// </summary>
         /// <param name="grid"></param>
         /// <param name="checkedNodes"></param>
         /// <param name="nodesToCheck"></param>
-        private void AStar(Grid grid, List<Vector2> checkedNodes, List<Vector2> nodesToCheck)
+        private void AStar(Grid grid, Vector2 startPoint, Vector2 endPoint)
         {
+            List<AstarNode> openNodes = new List<AstarNode>();
+            List<AstarNode> closedNodes = new List<AstarNode>();
 
+            AstarNode startNode = new AstarNode(startPoint, startPoint, endPoint);
+
+
+            AstarNode endNode = new AstarNode(endPoint, startPoint, endPoint);
+
+            openNodes.Add(startNode);
+
+            for (int i = 0; i < grid.Height; i++)
+            {
+                for (int g = 0; g < grid.Width; g++)
+                {
+                    if (grid.grid[i, g] == ' ' || (startPoint.X == i && startPoint.Y == g))
+                    {
+                        openNodes.Add(new AstarNode(new Vector2(i, g), startPoint, endPoint));
+                    }
+                }
+            }
+
+            while (openNodes.Count > 0)
+            {
+                AstarNode currentNode = openNodes[0];
+                int currentIndex = 0;
+
+                if (openNodes[0].NodePos.X == endPoint.X
+                    && openNodes[0].NodePos.Y == endPoint.Y)
+                {
+
+                }
+            }
         }
+    }
+    class AstarNode
+    {
+        private int g;
+        private int h;
+        private int f;
+        private Vector2 nodePos;
 
+        public Vector2 NodePos { get { return nodePos; } }
+        public int G { get { return g; } } //set { g = value; } }
+        public int H { get { return h; } }//set { h = value; } }
+        public int F { get { return f; } }//set { f = value; } }
 
-
-
-
-
+        public AstarNode(Vector2 nodePos, Vector2 startPos, Vector2 endPos)
+        {
+            this.nodePos = nodePos;
+            this.h = (int)Math.Sqrt(Math.Pow((nodePos.X - endPos.X),2) + Math.Pow((nodePos.Y - endPos.Y), 2));
+            this.g = (int)Math.Sqrt(Math.Pow((nodePos.X - startPos.X), 2) + Math.Pow((nodePos.Y - startPos.Y), 2)); ;
+            this.f = h + g;
+        }
     }
 }
