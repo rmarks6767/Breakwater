@@ -12,7 +12,7 @@ namespace UntitledPirateGame
         int x1, y1;
         const int width = 10000;
         const int height = width;
-        public List<Entities> members = new List<Entities>();
+        public List<Entity> members = new List<Entity>();
 
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace UntitledPirateGame
         {
             get
             {
-                if (CoordinateMath.RectanglesOverLap(Rectangle, Screen.ScreenRectangle))
+                if (CoordinateMath.RectanglesOverLap(Screen.ScreenRectangle,Rectangle) || CoordinateMath.RectanglesOverLap(Rectangle, Screen.ScreenRectangle ))
                 {
                     return true;
                 }
@@ -73,12 +73,19 @@ namespace UntitledPirateGame
 
         }
 
-        public void Add(Entities ent)
+        public void Add(Entity ent)
         {
             members.Add(ent);
         }
-
-        public void Remove(Entities ent)
+        public Entity At(int i)
+        {
+            if (members[i] != null)
+            {
+                return members[i];
+            }
+            return null;
+        }
+        public void Remove(Entity ent)
         {
             members.Remove(ent);
         }

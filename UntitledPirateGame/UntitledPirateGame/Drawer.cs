@@ -10,33 +10,32 @@ namespace UntitledPirateGame
 {
     class Drawer
     {
-        public void Draw(SpriteBatch spriteBatch, List<Entities> onScreenEntities)
+        public void Draw(SpriteBatch spriteBatch, List<Entity> onScreenEntity)
         {
-            List<Entities> sortedEntities = MergeSort(onScreenEntities);
+            List<Entity> sortedEntity = MergeSort(onScreenEntity);
 
             spriteBatch.Begin();
-            foreach(Entities entity in sortedEntities)
+            foreach(Entity entity in sortedEntity)
             {
                 Rectangle rect = new Rectangle(
-                    entity.vars.collisionBox.X - Screen.X1,
-                    entity.vars.collisionBox.Y - Screen.Y1,
-                    entity.vars.collisionBox.Width,
-                    entity.vars.collisionBox.Height
+                    entity.vars.Rectangle.X - Screen.X1,
+                    entity.vars.Rectangle.Y - Screen.Y1,
+                    entity.vars.Rectangle.Width,
+                    entity.vars.Rectangle.Height
                     );
                 spriteBatch.Draw(
                     texture: entity.vars.sprite,
                     destinationRectangle: rect,
-                    rotation: entity.vars.rotation,
-                    origin: new Vector2(entity.vars.collisionBox.Width / 2, entity.vars.collisionBox.Height / 2)
+                    rotation: entity.vars.rotation
                     );
             }
             spriteBatch.End();
         }
 
-        private List<Entities> MergeSort(List<Entities> list)
+        private List<Entity> MergeSort(List<Entity> list)
         {
-            List<Entities> right = new List<Entities>();
-            List<Entities> left = new List<Entities>();
+            List<Entity> right = new List<Entity>();
+            List<Entity> left = new List<Entity>();
 
             for(int i = 0; i < list.Count; i++)
             {
@@ -64,9 +63,9 @@ namespace UntitledPirateGame
             return list;
         }
 
-        private List<Entities> Merge(List<Entities> left, List<Entities> right)
+        private List<Entity> Merge(List<Entity> left, List<Entity> right)
         {
-            List<Entities> result = new List<Entities>();
+            List<Entity> result = new List<Entity>();
 
             int countL = 0, countR = 0;
 

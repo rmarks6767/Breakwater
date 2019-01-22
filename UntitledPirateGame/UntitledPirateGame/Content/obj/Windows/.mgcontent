@@ -5,8 +5,10 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/Japan/Desktop/Breakwater/UntitledPirateGame/UntitledPirateGame/Content/defaultSprite.png</File>
+    <File>C:/Users/Japan/Desktop/Breakwater/UntitledPirateGame/UntitledPirateGame/Content/testBackground.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

@@ -15,15 +15,15 @@ namespace UntitledPirateGame
             get { return new Vector2(Mouse.GetState().X, Mouse.GetState().Y); }
         }
 
-        public static float GetAngleBetween(Entities entity)
+        public static float GetAngleBetween(Entity entity)
         {
-            if(entity.vars.originX >= Position.X)
+            if(entity.vars.Rectangle.Center.X >= Position.X)
             {
-                return (float)Math.Atan((Position.Y - entity.vars.originY) / (Position.X - entity.vars.originX));
+                return (float)Math.Atan((Position.Y - entity.vars.Rectangle.Center.Y) / (Position.X - entity.vars.Rectangle.Center.X));
             }
             else
             {
-                return (float)(Math.Atan((Position.Y - entity.vars.originY) / (Position.X - entity.vars.originX)) + Math.PI);
+                return (float)(Math.Atan((Position.Y - entity.vars.Rectangle.Center.Y) / (Position.X - entity.vars.Rectangle.Center.X)) + Math.PI);
             }
         }
     }

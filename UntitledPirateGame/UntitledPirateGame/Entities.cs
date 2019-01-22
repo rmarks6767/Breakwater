@@ -8,9 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace UntitledPirateGame
 {
-    class Entities
+    class Entity
     {
-        /* Entities Include but are not limited to:
+        /* Entity Include but are not limited to:
          * -The Player
          * -Enemies
          * -Any buildings
@@ -19,33 +19,30 @@ namespace UntitledPirateGame
          */
         public struct EntityVariables
         {
+            /// <summary>
+            /// Sprite for the entity
+            /// </summary>
+            public Texture2D sprite;
 
             /// <summary>
-            ///name of entity being created 
+            /// Collision and drawing rectangle
             /// </summary>
-            public string name;
+            public Rectangle Rectangle;
 
             /// <summary>
-            ///type of entity being created 
+            /// Elevation of entity drawn on the screen
             /// </summary>
-            public string type;
-
-            /// Origin of the original object
-            public int originX;
-            public int originY;
-
-            // "depth" of the object, position on the layers on the screen
             public int elevation;
 
-            // rotation of the object in radians
-            public float rotation;
-
-            // if the object is visible on the screen
+            /// <summary>
+            /// Whether or not the entity will be have its sprite drawn onto the screen
+            /// </summary>
             public bool isVisible;
 
-            //the graphics stuff for the entity
-            public Texture2D sprite;
-            public Rectangle collisionBox;
+            /// <summary>
+            /// The rotation of the sprite drawn on screen
+            /// </summary>
+            public float rotation;
         }
         
         /// <summary>
@@ -55,7 +52,7 @@ namespace UntitledPirateGame
         {
             get
             {
-                if (CoordinateMath.RectanglesOverLap(Screen.ScreenRectangle,vars.collisionBox))
+                if (CoordinateMath.RectanglesOverLap(Screen.ScreenRectangle,vars.Rectangle) || CoordinateMath.RectanglesOverLap(vars.Rectangle,Screen.ScreenRectangle))
                 {
                     return true;
                 }
@@ -63,16 +60,18 @@ namespace UntitledPirateGame
             }
         }
 
-        //creating the struct so it may be accessed outside of the class
+        /// <summary>
+        /// Struct of the stored variables of the entity
+        /// </summary>
         public EntityVariables vars;
 
-        public Entities(int width, int height, int originX, int originY, int elevation, float rotation, bool isVisible, Texture2D sprite)
+        public Entity(int width, int height, int x, int y, int elevation, float rotation, bool isVisible, Texture2D sprite)
         {
             //create the struct to hold the variables for the entity
             vars = new EntityVariables
             {
                 //set the collision box based on the origin
-                collisionBox = new Rectangle((originX - (width / 2)), (originY - (height / 2)), width, height),
+                Rectangle = new Rectangle(x,y, width, height),
                 elevation = elevation,
                 isVisible = isVisible,
                 sprite = sprite,
