@@ -10,13 +10,13 @@ namespace UntitledPirateGame
     class Chunk
     {
         int x1, y1;
-        const int width = 10000;
-        const int height = width;
-        public List<Entity> members = new List<Entity>();
+        int width, height;
+        public List<Entities> members = new List<Entities>();
+        private Chunk[,] adjChunks = new Chunk[3, 3];
 
 
         /// <summary>
-        /// The screen's world x1 coordinate
+        /// The chunk's world x1 coordinate
         /// </summary>
         public int X1
         {
@@ -25,7 +25,7 @@ namespace UntitledPirateGame
         }
 
         /// <summary>
-        /// The screen's world y1 coordinate
+        /// The chunk's world y1 coordinate
         /// </summary>
         public int Y1
         {
@@ -34,7 +34,7 @@ namespace UntitledPirateGame
         }
 
         /// <summary>
-        /// The screen's world x2 coordinate
+        /// The chunk's world x2 coordinate
         /// </summary>
         public int X2
         {
@@ -42,7 +42,7 @@ namespace UntitledPirateGame
         }
 
         /// <summary>
-        /// The sreen's world y2 coordinate
+        /// The chunk's world y2 coordinate
         /// </summary>
         public int Y2
         {
@@ -66,11 +66,12 @@ namespace UntitledPirateGame
             }
         }
 
-        public Chunk(int x1, int y1)
+        public Chunk(int x1, int y1, int side)
         {
             this.x1 = x1;
             this.y1 = y1;
-
+            width = side;
+            height = width;
         }
 
         public void Add(Entity ent)
@@ -90,5 +91,9 @@ namespace UntitledPirateGame
             members.Remove(ent);
         }
 
+        public void StoreAdjChunks(Chunk[,] chunks)
+        {
+            
+        }
     }
 }
