@@ -41,9 +41,10 @@ namespace UntitledPirateGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            this.IsMouseVisible = true;
             DRAWER = new Drawer();
             Chunks = new List<Chunk>();
-            Chunks.Add(new Chunk(0, 0, 100000));
+            Chunks.Add(new Chunk(0, 0, 4096));
             
             
             
@@ -65,8 +66,8 @@ namespace UntitledPirateGame
             Default = this.Content.Load<Texture2D>("defaultSprite");
             Background = this.Content.Load<Texture2D>("testBackground");
 
-            Chunks[0].Add(bckgrnd = new Entity(4096, 4096, 0, 0, 0, 0, true, Background));
-            Chunks[0].Add(player = new Player(100, 16, 16, 0, 0, 1, 0, true, Default));
+            Chunks[0].Add(bckgrnd = new Entity(4096, 4096, 2048, 2048, 0, 0, true, Background));
+            Chunks[0].Add(player = new Player(500, 16, 16, 0, 0, 1, 0, true, Default));
             // TODO: use this.Content to load your game content here
         }
 
@@ -91,8 +92,8 @@ namespace UntitledPirateGame
 
             // TODO: Add your update logic here
             player.Update(gameTime);
-            Screen.X1 = player.vars.Rectangle.Center.X - ((Screen.X2 - Screen.X1) / 2);
-            Screen.Y1 = player.vars.Rectangle.Center.Y - ((Screen.Y2 - Screen.Y1) / 2);
+            Screen.X = (int)player.vars.DrawingVector.X;
+            Screen.Y = (int)player.vars.DrawingVector.Y;
             base.Update(gameTime);
         }
 
@@ -123,29 +124,40 @@ namespace UntitledPirateGame
             bool pos = false;
             int bx = 0;
             int by = 0;
+            bool cos = false;
             bool bos = false;
+
             if (bckgrnd != null)
             {
-                bx = bckgrnd.vars.Rectangle.X;
-                by = bckgrnd.vars.Rectangle.Y;
+                bx = bckgrnd.vars.CollisionRectangle.X;
+                by = bckgrnd.vars.CollisionRectangle.Y;
                 bos = bckgrnd.OnScreen;
             }
             if (player != null)
             {
-                px = player.vars.Rectangle.X;
-                py = player.vars.Rectangle.Y;
+                px = (int)player.vars.DrawingVector.X;
+                py = (int)player.vars.DrawingVector.Y;
                 pos = player.OnScreen;
             }
-        
+            if (Chunks[0] != null)
+            {
+                cos = Chunks[0].OnScreen;
+            }
+
             Debug.WriteLine(
-                "Screen ({0},{1})\n" +
+                
                 "Player ({2},{3})\n" +
                 "Background ({4},{5})\n" +
                 "Player On Screen {6}\n" +
-                "Background On Screen {7}\n",Screen.X1,Screen.Y1,
-                px,py,
-                bx,by,
-                pos,bos
+                "Background On Screen {7}\n" +
+                "Chunk on screen{8}\n" +
+                "Screen ({0},{1})\n" +
+                "Pointer({9},{10}", Screen.X, Screen.Y,
+                px, py,
+                bx, by,
+                pos, bos,
+                cos,
+                Pointer.Position.X, Pointer.Position.Y
 
                 
                 );

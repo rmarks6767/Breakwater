@@ -51,14 +51,14 @@ namespace UntitledPirateGame
 
         public Rectangle Rectangle
         {
-            get { return new Rectangle(x1, y1, X2 - x1, Y2 - y1); }
+            get { return new Rectangle(x1, y1, width, height); }
         }
 
         public bool OnScreen
         {
             get
             {
-                if (CoordinateMath.RectanglesOverLap(Screen.ScreenRectangle,Rectangle) || CoordinateMath.RectanglesOverLap(Rectangle, Screen.ScreenRectangle ))
+                if (Screen.ScreenRectangle.Intersects(Rectangle) || Rectangle.Intersects(Screen.ScreenRectangle))
                 {
                     return true;
                 }

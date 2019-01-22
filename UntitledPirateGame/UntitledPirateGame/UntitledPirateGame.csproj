@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Chunk.cs" />
     <Compile Include="ChunkLoader.cs" />
+    <Compile Include="Circle.cs" />
     <Compile Include="CollisionSystem.cs" />
     <Compile Include="CoordinateMath.cs" />
     <Compile Include="Entities.cs" />
