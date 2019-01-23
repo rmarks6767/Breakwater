@@ -44,7 +44,7 @@ Creates a circle.
 ### CollisionSystem.cs
 List all of the entities that exist in the player space.
 ### CoordinateMath.cs
-Originally used rectanges to check if a given set of points contained a point within it. Used for collision detection. Now uses ellipses :tm:
+Originally used rectanges to check if a given set of points contained a point within it. Used for collision detection. ~~Now uses ellipses :tm:~~ Now uses lots and lots of cirlces.
 ### Drawer.cs
 Draws the map and the entities
 ### Entities.cs
