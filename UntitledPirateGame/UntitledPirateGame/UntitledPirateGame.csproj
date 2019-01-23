@@ -52,6 +52,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Grid.cs" />
     <Compile Include="ICollidable.cs" />
+    <Compile Include="IMovable.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Pointer.cs" />
     <Compile Include="Program.cs" />

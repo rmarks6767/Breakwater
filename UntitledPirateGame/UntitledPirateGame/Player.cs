@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace UntitledPirateGame
 {
-    class Player : Entity
+    class Player : Entity, IMovable
     {
         private int speed;
 

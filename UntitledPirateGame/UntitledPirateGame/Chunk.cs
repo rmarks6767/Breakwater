@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
+
 
 namespace UntitledPirateGame
 {
@@ -14,6 +16,10 @@ namespace UntitledPirateGame
         public List<Entity> members = new List<Entity>();
         private Chunk[,] adjChunks = new Chunk[3, 3];
 
+        public Chunk[,] AdjChunks
+        {
+            get { return adjChunks; }
+        }
 
         /// <summary>
         /// The chunk's world x1 coordinate
@@ -77,6 +83,7 @@ namespace UntitledPirateGame
         public void Add(Entity ent)
         {
             members.Add(ent);
+            Debug.Write("Entity Added");
         }
         public Entity At(int i)
         {
@@ -95,5 +102,6 @@ namespace UntitledPirateGame
         {
             adjChunks = chunks;
         }
+
     }
 }
