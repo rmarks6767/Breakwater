@@ -45,21 +45,10 @@ namespace UntitledPirateGame
 
             openNodes.Add(startNode);
 
-            /*for (int i = 0; i < grid.Height; i++)
-            {
-                for (int g = 0; g < grid.Width; g++)
-                {
-                    if (grid.grid[i, g] == ' ' || (startPoint.X == i && startPoint.Y == g))
-                    {
-                        openNodes.Add(new AstarNode(new Vector2(i, g), startPoint, endPoint));
-                    }
-                }
-            }*/
+            AstarNode currentNode = openNodes[0];
 
             while (openNodes.Count > 0)
             {
-                AstarNode currentNode = openNodes[0];
-
                 if (openNodes[0].NodePos.X == endPoint.X
                     && openNodes[0].NodePos.Y == endPoint.Y)
                 {
@@ -67,49 +56,73 @@ namespace UntitledPirateGame
                 }
 
                 //add the nodes that are around it to the open nodes
-                int X = (int)openNodes[0].NodePos.X;
-                int Y = (int)openNodes[0].NodePos.Y;
+                int X = (int)currentNode.NodePos.X;
+                int Y = (int)currentNode.NodePos.Y;
 
-                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X + 1, Y] != 'X')
+                AstarNode parent = currentNode;
+                AstarNode node1 = new AstarNode(new Vector2(X + 1, Y), startPoint, endPoint);
+                AstarNode node2 = new AstarNode(new Vector2(X - 1, Y), startPoint, endPoint);
+                AstarNode node3 = new AstarNode(new Vector2(X, Y + 1), startPoint, endPoint);
+                AstarNode node4 = new AstarNode(new Vector2(X, Y - 1), startPoint, endPoint);
+                AstarNode node5 = new AstarNode(new Vector2(X + 1, Y + 1), startPoint, endPoint);
+                AstarNode node6 = new AstarNode(new Vector2(X + 1, Y - 1), startPoint, endPoint);
+                AstarNode node7 = new AstarNode(new Vector2(X - 1, Y + 1), startPoint, endPoint);
+                AstarNode node8 = new AstarNode(new Vector2(X - 1, Y - 1), startPoint, endPoint);
+
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X + 1, Y] != 'X' && openNodes.Contains(node1))
                 {
-                    openNodes.Add(new AstarNode(new Vector2(X + 1, Y), startPoint, endPoint));
+                    openNodes.Add(node1);
                 }
-                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X - 1, Y] != 'X')
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X - 1, Y] != 'X' && openNodes.Contains(node2))
                 {
-                    openNodes.Add(new AstarNode(new Vector2(X - 1, Y), startPoint, endPoint));
+                    openNodes.Add(node2);
                 }
-                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X, Y + 1] != 'X')
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X, Y + 1] != 'X' && openNodes.Contains(node3))
                 {
-                    openNodes.Add(new AstarNode(new Vector2(X, Y + 1), startPoint, endPoint));
+                    openNodes.Add(node3);
                 }
-                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X, Y - 1] != 'X')
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X, Y - 1] != 'X' && openNodes.Contains(node4))
                 {
-                    openNodes.Add(new AstarNode(new Vector2(X, Y - 1), startPoint, endPoint));
+                    openNodes.Add(node4);
                 }
-                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X + 1, Y + 1] != 'X')
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X + 1, Y + 1] != 'X' && openNodes.Contains(node5))
                 {
-                    openNodes.Add(new AstarNode(new Vector2(X + 1, Y + 1), startPoint, endPoint));
+                    openNodes.Add(node5);
                 }
-                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X + 1, Y - 1] != 'X')
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X + 1, Y - 1] != 'X' && openNodes.Contains(node6))
                 {
-                    openNodes.Add(new AstarNode(new Vector2(X + 1, Y - 1), startPoint, endPoint));
+                    openNodes.Add(node6);
                 }
-                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X - 1, Y + 1] != 'X')
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X - 1, Y + 1] != 'X' && openNodes.Contains(node7))
                 {
-                    openNodes.Add(new AstarNode(new Vector2(X - 1, Y + 1), startPoint, endPoint));
+                    openNodes.Add(node7);
                 }
-                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X - 1, Y + 1] != 'X')
+                if (X >= 0 && X < grid.Width && Y >= 0 && Y < grid.Height && grid.grid[X - 1, Y + 1] != 'X' && openNodes.Contains(node8))
                 {
-                    openNodes.Add(new AstarNode(new Vector2(X - 1, Y - 1), startPoint, endPoint));
+                    openNodes.Add(node8);
                 }
 
-                //starts at 1 because that is the parent node
-                for (int i = 1; i < openNodes.Count - 1; i++)
+                openNodes.Remove(parent);
+                closedNodes.Add(parent);
+
+                int lowestCost = openNodes[0].F;
+
+                for (int i = 0; i < openNodes.Count; i++)
                 {
-                    int successorCurrentCost = openNodes[i].F;
-
-
+                    if (openNodes[i].NodePos.X == endNode.NodePos.X && openNodes[i].NodePos.Y == endNode.NodePos.Y)
+                    {
+                        closedNodes.Add(openNodes[i]);
+                        return;
+                    }
+                    if (openNodes[i].F < lowestCost)
+                    {
+                        lowestCost = openNodes[i].F;
+                        currentNode = openNodes[i];
+                    }
                 }
+
+
+
             }
         }
     }
