@@ -10,7 +10,14 @@ namespace UntitledPirateGame
 {
     class Drawer
     {
-        public void Draw(SpriteBatch spriteBatch, List<Entity> onScreenEntity)
+        SpriteBatch spriteBatch;
+
+        public Drawer(SpriteBatch sb)
+        {
+            spriteBatch = sb;
+        }
+
+        public void Draw(List<Entity> onScreenEntity)
         {
             List<Entity> sortedEntity = MergeSort(onScreenEntity);
 
@@ -25,6 +32,29 @@ namespace UntitledPirateGame
                     rotation: entity.vars.rotation,
                     origin: new Vector2(entity.vars.sprite.Width/2, entity.vars.sprite.Height / 2)
                     );
+            }
+            spriteBatch.End();
+        }
+
+        public void Draw(List<Entity> onScreenEntity, List<UIComponent> canvas)
+        {
+            List<Entity> sortedEntity = MergeSort(onScreenEntity);
+
+            spriteBatch.Begin();
+            foreach (Entity entity in sortedEntity)
+            {
+                //Thanks Aidan
+                Vector2 toDraw = new Vector2(entity.vars.DrawingVector.X - Screen.X + Screen.ScreenWidth / 2, entity.vars.DrawingVector.Y - Screen.Y + Screen.ScreenHeight / 2);
+                spriteBatch.Draw(
+                    texture: entity.vars.sprite,
+                    position: toDraw,
+                    rotation: entity.vars.rotation,
+                    origin: new Vector2(entity.vars.sprite.Width / 2, entity.vars.sprite.Height / 2)
+                    );
+            }
+            foreach (UIComponent component in canvas)
+            {
+                component.Draw();
             }
             spriteBatch.End();
         }

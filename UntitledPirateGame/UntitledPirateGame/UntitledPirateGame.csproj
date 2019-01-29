@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Canvas.cs" />
     <Compile Include="Chunk.cs" />
     <Compile Include="ChunkLoader.cs" />
     <Compile Include="Circle.cs" />
@@ -59,6 +60,8 @@
     <Compile Include="QuadTree.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="TerrainGenerator.cs" />
+    <Compile Include="UIComponent.cs" />
+    <Compile Include="UIText.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
