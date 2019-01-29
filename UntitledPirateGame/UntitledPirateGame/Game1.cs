@@ -14,11 +14,13 @@ namespace UntitledPirateGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Drawer DRAWER;
+        Canvas CANVAS;
         List<Chunk> Chunks;
         Texture2D Default;
         Texture2D Background;
         Player player;
         Entity bckgrnd;
+        SpriteFont font;
 
         public Game1()
         {
@@ -42,7 +44,6 @@ namespace UntitledPirateGame
         {
             // TODO: Add your initialization logic here
             this.IsMouseVisible = true;
-            DRAWER = new Drawer();
             Chunks = new List<Chunk>();
             Chunks.Add(new Chunk(0, 0, 4096));
             
@@ -62,6 +63,11 @@ namespace UntitledPirateGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            DRAWER = new Drawer(spriteBatch);
+            CANVAS = new Canvas();
+            font = Content.Load<SpriteFont>("font");
+
+            CANVAS.AddComponent(new UIText(spriteBatch, new Rectangle(0, 0, 1, 1), null, 0, font, "Fuck UI", Color.Black));
 
             Default = this.Content.Load<Texture2D>("defaultSprite");
             Background = this.Content.Load<Texture2D>("testBackground");
@@ -165,7 +171,7 @@ namespace UntitledPirateGame
             // TODO: Add your drawing code here
             if (OnScreenEntities.Count > 0)
             {
-                DRAWER.Draw(spriteBatch, OnScreenEntities);
+                DRAWER.Draw(OnScreenEntities, CANVAS.GetUIComponents());
             }
             
             base.Draw(gameTime);

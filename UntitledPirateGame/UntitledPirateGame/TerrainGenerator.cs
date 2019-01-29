@@ -19,6 +19,7 @@ namespace UntitledPirateGame
             {
                 Seed = new Random().Next()
             };
+            
 
             // Create a new, empty, noise map and initialize a new planar noise map builder with it
             var noiseMap = new NoiseMap();

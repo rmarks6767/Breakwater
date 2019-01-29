@@ -101,3 +101,4 @@ C:\Users\Aidan's_9th_Laptop\Documents\Breakwater\Breakwater\UntitledPirateGame\U
 C:\Users\Aidan's_9th_Laptop\Documents\Breakwater\Breakwater\UntitledPirateGame\UntitledPirateGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 C:\Users\Aidan's_9th_Laptop\Documents\Breakwater\Breakwater\UntitledPirateGame\UntitledPirateGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\Aidan's_9th_Laptop\Documents\Breakwater\Breakwater\UntitledPirateGame\UntitledPirateGame\obj\x86\Debug\UntitledPirateGame.csproj.CopyComplete
+C:\Users\Aidan's_9th_Laptop\Documents\Breakwater\Breakwater\UntitledPirateGame\UntitledPirateGame\bin\Windows\x86\Debug\Content\font.xnb
