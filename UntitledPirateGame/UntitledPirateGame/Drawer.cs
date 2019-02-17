@@ -54,7 +54,7 @@ namespace UntitledPirateGame
             }
             foreach (UIComponent component in canvas)
             {
-                component.Draw();
+                component.Draw(spriteBatch);
             }
             spriteBatch.End();
         }

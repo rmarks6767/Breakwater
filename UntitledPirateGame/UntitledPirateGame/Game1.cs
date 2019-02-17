@@ -65,15 +65,18 @@ namespace UntitledPirateGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
             DRAWER = new Drawer(spriteBatch);
             CANVAS = new Canvas();
-            font = Content.Load<SpriteFont>("font");
-
-            CANVAS.AddComponent(new UIText(spriteBatch, new Rectangle(0, 0, 1, 1), null, 0, font, "Fuck UI", Color.Black));
-
             Default = this.Content.Load<Texture2D>("defaultSprite");
             Background = this.Content.Load<Texture2D>("testBackground");
+            font = Content.Load<SpriteFont>("font");
 
             Chunks[0].Add(bckgrnd = new Entity(4096, 4096, 2048, 2048, 0, 0, true, Background));
             Chunks[0].Add(player = new Player(500, 16, 16, 0, 0, 1, 0, true, Default));
+
+            //Canvas Start
+            UIPanel panel = new UIPanel(new Rectangle(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2, 50, 50), null, 0);
+            panel.AddComponent(new UIButton(new OnClickDelegate(player.ResetPos), new OnHoverDelegate(Hover), "Test Button", new Rectangle(120, 120, 20, 20), null, 0, font, Color.Black, Color.Aquamarine, TextAlign.Center));
+            CANVAS.AddComponent(panel);
+            //Canvas End
             // TODO: use this.Content to load your game content here
         }
 
@@ -100,6 +103,7 @@ namespace UntitledPirateGame
             player.Update(gameTime);
             Screen.X = (int)player.vars.DrawingVector.X;
             Screen.Y = (int)player.vars.DrawingVector.Y;
+            CANVAS.Update();
             base.Update(gameTime);
         }
 
@@ -175,6 +179,11 @@ namespace UntitledPirateGame
             }
             
             base.Draw(gameTime);
+        }
+
+        public void Hover()
+        {
+            System.Console.WriteLine("Hover");
         }
     }
 }

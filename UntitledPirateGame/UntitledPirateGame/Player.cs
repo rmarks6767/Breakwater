@@ -49,5 +49,15 @@ namespace UntitledPirateGame
 
             vars.rotation = Pointer.GetAngleBetween(this);
         }
+
+        public void ResetPos()
+        {
+            vars.DrawingVector.X = 0;
+            vars.DrawingVector.Y = 0;
+            vars.CollisionRectangle.X = 0;
+            vars.CollisionRectangle.Y = 0;
+            vars.CollisonCircle.X = 0;
+            vars.CollisonCircle.Y = 0;
+        }
     }
 }
