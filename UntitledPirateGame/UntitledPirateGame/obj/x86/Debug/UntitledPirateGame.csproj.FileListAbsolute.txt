@@ -101,3 +101,7 @@ C:\Users\Aidan's_9th_Laptop\Documents\Breakwater\Breakwater\UntitledPirateGame\U
 C:\Users\Aidan's_9th_Laptop\Documents\Breakwater\Breakwater\UntitledPirateGame\UntitledPirateGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 C:\Users\Aidan's_9th_Laptop\Documents\Breakwater\Breakwater\UntitledPirateGame\UntitledPirateGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\Aidan's_9th_Laptop\Documents\Breakwater\Breakwater\UntitledPirateGame\UntitledPirateGame\obj\x86\Debug\UntitledPirateGame.csproj.CopyComplete
+D:\Users\river\Desktop\Breakwater\UntitledPirateGame\UntitledPirateGame\obj\x86\Debug\UntitledPirateGame.csprojAssemblyReference.cache
+D:\Users\river\Desktop\Breakwater\UntitledPirateGame\UntitledPirateGame\obj\x86\Debug\UntitledPirateGame.csproj.CoreCompileInputs.cache
+D:\Users\river\Desktop\Breakwater\UntitledPirateGame\UntitledPirateGame\obj\x86\Debug\UntitledPirateGame.exe
+D:\Users\river\Desktop\Breakwater\UntitledPirateGame\UntitledPirateGame\obj\x86\Debug\UntitledPirateGame.pdb
