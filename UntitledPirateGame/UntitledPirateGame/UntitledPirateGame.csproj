@@ -48,10 +48,11 @@
     <Compile Include="CoordinateMath.cs" />
     <Compile Include="Entities.cs" />
     <Compile Include="Drawer.cs" />
-    <Compile Include="FindPath.cs" />
+    <Compile Include="PathFinding\FindPath.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Grid.cs" />
+    <Compile Include="PathFinding\Grid.cs" />
     <Compile Include="ICollidable.cs" />
+    <Compile Include="PathFinding\Node.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Pointer.cs" />
     <Compile Include="Program.cs" />
