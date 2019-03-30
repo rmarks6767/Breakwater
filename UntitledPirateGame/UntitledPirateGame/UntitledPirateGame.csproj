@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="UIButton.cs" />
     <Compile Include="Canvas.cs" />
     <Compile Include="Chunk.cs" />
     <Compile Include="ChunkLoader.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Screen.cs" />
     <Compile Include="TerrainGenerator.cs" />
     <Compile Include="UIComponent.cs" />
+    <Compile Include="UIPanel.cs" />
     <Compile Include="UIText.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -26,6 +26,14 @@ namespace UntitledPirateGame
             return components;
         }
 
+        public void Update()
+        {
+            foreach(UIComponent component in components)
+            {
+                component.Update();
+            }
+        }
+
         private List<UIComponent> MergeSort(List<UIComponent> list)
         {
             List<UIComponent> right = new List<UIComponent>();

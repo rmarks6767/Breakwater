@@ -10,18 +10,13 @@ namespace UntitledPirateGame
 {
     class UIComponent
     {
-        private Rectangle drawingRect, sourceRect;
+        private Rectangle drawingRect;
         private Texture2D background;
         private int elevation;
-        protected SpriteBatch spriteBatch;
 
         public Rectangle DrawingRectangle
         {
             get { return drawingRect; }
-        }
-        public Rectangle SourceRectangle
-        {
-            get { return sourceRect; }
         }
         public Texture2D Background
         {
@@ -32,24 +27,26 @@ namespace UntitledPirateGame
             get { return elevation; }
         }
 
-        public UIComponent(SpriteBatch sb, Rectangle drawingRectangle, Texture2D backgroundTexture, int _elevation)
+        public UIComponent(Rectangle drawingRectangle, Texture2D backgroundTexture, int _elevation)
         {
             drawingRect = drawingRectangle;
             background = backgroundTexture;
-            if (background != null)
-            {
-                sourceRect = new Rectangle(0, 0, Background.Width, Background.Height);
-            }
             elevation = _elevation;
-            spriteBatch = sb;
         }
 
-        public virtual void Draw()
+        public virtual void Draw(SpriteBatch sb)
         {
             if (background != null)
             {
-                spriteBatch.Draw(texture: background, destinationRectangle: drawingRect, sourceRectangle: sourceRect);
+                sb.Draw(texture: background, destinationRectangle: drawingRect);
             }
+        }
+
+        public virtual void Update() {  }
+
+        public void ChangePos(Vector2 newPos)
+        {
+            drawingRect = new Rectangle((int)newPos.X, (int)newPos.Y, drawingRect.Width, drawingRect.Height);
         }
     }
 }
