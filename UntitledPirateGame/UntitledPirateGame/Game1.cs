@@ -43,7 +43,7 @@ namespace UntitledPirateGame
             // TODO: Add your initialization logic here
             this.IsMouseVisible = true;
             DRAWER = new Drawer();
-            CL = new ChunkLoader(5000, 10, 10);
+            CL = new ChunkLoader(1000, 10, 10);
             base.Initialize();
             Screen.SetGame(this);
         }
@@ -86,8 +86,12 @@ namespace UntitledPirateGame
             // TODO: Add your update logic here
             player.Update(gameTime);
             CL.Update();
+           
             Screen.X = (int)player.vars.DrawingVector.X;
             Screen.Y = (int)player.vars.DrawingVector.Y;
+            //Debug.WriteLine("Player: ({0},{1})", player.vars.DrawingVector.X, player.vars.DrawingVector.Y);
+            //Debug.WriteLine("Screen: ({0},{1})", Screen.X, Screen.Y);
+
             base.Update(gameTime);
         }
 

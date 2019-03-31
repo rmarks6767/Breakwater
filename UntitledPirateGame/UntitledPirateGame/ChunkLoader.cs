@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace UntitledPirateGame
 {
@@ -43,6 +44,8 @@ namespace UntitledPirateGame
                 for (int ii = 0; ii < chunkMap.GetLength(1); ii++)
                 {
                     Chunk chunk = chunkMap[i, ii];
+
+                    chunk.QuadTree = new QuadTree(chunk.members,chunk.X1,chunk.X2,chunk.Y1,chunk.Y2);
                     for(int x = 0; x < chunk.members.Count; x++)
                     {
                         Entity ent = chunk.members[x];
@@ -257,8 +260,10 @@ namespace UntitledPirateGame
                             //Nothing is inside
                             else
                             {
+                                //Just remove it from our members list. Its not our problem anymore
                                 chunk.members.Remove(ent);
-                                //REMEMBER TO REMOVE THE ENTITY FROM THE MEMBERS LIST
+                                Debug.WriteLine(ent.ToString() + " has been removed from a chunk");
+                                
                             }
 
                         }      

@@ -11,5 +11,6 @@ namespace UntitledPirateGame
     /// </summary>
     interface IMovable
     {
+
     }
 }

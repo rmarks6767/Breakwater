@@ -23,11 +23,15 @@ namespace UntitledPirateGame
             /// Sprite for the entity
             /// </summary>
             public Texture2D sprite;
-
+            private int width;
+            private int height;
             /// <summary>
             /// Circle used for collisions
             /// </summary>
-            public Circle CollisonCircle;
+            public Circle Circle
+            {
+                get { return new Circle(new Point((int)DrawingVector.X, (int)DrawingVector.Y), width); }
+            }
 
             /// <summary>
             /// Vector used for drawing
@@ -37,7 +41,11 @@ namespace UntitledPirateGame
             /// <summary>
             /// Rectangle used for collisions
             /// </summary>
-            public Rectangle CollisionRectangle;
+            public Rectangle CollisionRectangle
+            {
+                get { return new Rectangle((int)DrawingVector.X + (width / 2), (int)DrawingVector.Y + (height / 2), width, height); }
+            }
+                 
 
             /// <summary>
             /// Elevation of entity drawn on the screen
@@ -53,6 +61,12 @@ namespace UntitledPirateGame
             /// The rotation of the sprite drawn on screen
             /// </summary>
             public float rotation;
+
+            /// <summary>
+            /// The leaf in which this entity belongs to
+            /// (WARNING! THIS WILL ALWAYS BE NULL UNLESS THIS OBJECT HAS ICOLLIDABLE)
+            /// </summary>
+            public QuadTree leaf;
         }
         
         /// <summary>
@@ -80,10 +94,7 @@ namespace UntitledPirateGame
             //create the struct to hold the variables for the entity
             vars = new EntityVariables
             {
-
                 DrawingVector = new Vector2(originx, originy),
-                CollisionRectangle = new Rectangle(originx - (width / 2), originy - (height / 2), width, height),
-                CollisonCircle = new Circle(originx, originy, width / 2),
                 elevation = elevation,
                 isVisible = isVisible,
                 sprite = sprite,

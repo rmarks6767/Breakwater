@@ -15,6 +15,10 @@ namespace UntitledPirateGame
         int width, height;
         public List<Entity> members = new List<Entity>();
         private Chunk[,] adjChunks = new Chunk[3, 3];
+        /// <summary>
+        /// A quadtree for collision created every chunk loader update
+        /// </summary>
+        public QuadTree QuadTree;
 
         public Chunk[,] AdjChunks
         {

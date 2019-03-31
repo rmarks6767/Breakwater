@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace UntitledPirateGame
 {
+    /// <summary>
+    /// An interface given to collidable objects
+    /// </summary>
     interface ICollidable
     {
         bool HasCollision
@@ -13,8 +16,6 @@ namespace UntitledPirateGame
             get;
             set;
         }
-
-        List<ICollidable> IsColliding();
 
     }
 }
